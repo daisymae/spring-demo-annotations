@@ -8,16 +8,28 @@ public class TennisCoach implements Coach {
 
 	private FortuneService fortuneService;
 	
-	@Autowired
-	public TennisCoach(FortuneService theFortuneService) {
-		fortuneService = theFortuneService;
+	public TennisCoach() {
+		System.out.println(">> TennisCoach: inside default constructor");
 	}
 	
+	// going to use setter injection, so don't need ctor injection
+//	@Autowired
+//	public TennisCoach(FortuneService theFortuneService) {
+//		fortuneService = theFortuneService;
+//	}
+	
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println(">> TennisCoach: inside setter for fotuneService");
+		this.fortuneService = fortuneService;
+	}
+
 	@Override
 	public String getDailyWorkout() {
 		return "Practice backhand volley";
 	}
 	
+	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
