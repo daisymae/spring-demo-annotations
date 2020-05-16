@@ -10,7 +10,7 @@ public class PingPongCoach implements Coach {
 	private FortuneService fortuneService;
 
 	@Autowired
-	PingPongCoach(@Qualifier("happyFortuneService") FortuneService theFortuneService) {
+	PingPongCoach(@Qualifier("fileFortuneService") FortuneService theFortuneService) {
 		fortuneService = theFortuneService;
 	}
 	
